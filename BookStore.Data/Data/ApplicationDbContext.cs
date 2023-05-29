@@ -15,6 +15,11 @@ namespace OnlineBookStoreApplication.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<CoverType> CoverTypes { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<NewShoppingCartList> NewShoppingCartLists { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
+        public DbSet<OrderHeader> OrederHeader { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -47,6 +52,18 @@ namespace OnlineBookStoreApplication.Data
                     ListPrice50 = 25,
                     ListPrice100 = 20,
                     ImageUrl=""
+                }
+                );
+            modelBuilder.Entity<Company>().HasData(
+                new Company
+                {
+                    Id=1,
+                    Name="Wipro",
+                    City="Banglore",
+                    StreetAddress="#27,EC2,BAnglore",
+                    PostalCode="515201",
+                    State="Karnataka",
+                    PhoneNumber="9505341521"
                 }
                 );
         }

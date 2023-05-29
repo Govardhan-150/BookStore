@@ -11,7 +11,7 @@ namespace BookStore.DataAccess.Repository.IRepository
     {
         T GetFirstOrDefault(Expression<Func<T, bool>> Filter,string?
             IncludeProperties=null);
-        IEnumerable<T> GetAll(string? IncludeProperties=null);
+        IEnumerable<T> GetAll(Expression<Func<T, bool>> Filter=null,string? IncludeProperties=null);
         void Add(T entity);
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);

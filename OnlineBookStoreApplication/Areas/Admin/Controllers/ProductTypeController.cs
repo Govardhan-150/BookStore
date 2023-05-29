@@ -7,10 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using BookStore.Models.ViewModels;
 using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authorization;
+using BookStore.Utility;
 
 namespace OnlineBookStoreApplication.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles =SD.Role_Admin)]
     public class ProductTypeController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -47,7 +50,7 @@ namespace OnlineBookStoreApplication.Areas.Admin.Controllers
                 }),
                 Product = new ProductType()
 
-        };
+            };
             if (id == 0 || id == null)
             {
                 return View(productViewModel);

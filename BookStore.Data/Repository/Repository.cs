@@ -25,9 +25,13 @@ namespace BookStore.DataAccess.Repository
             dbSet.Add(entity);
         }
 
-        public IEnumerable<T> GetAll(string? IncludeProperties=null)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> Filter=null,string? IncludeProperties=null)
         {
             IQueryable<T> query = dbSet;
+            if(Filter!=null)
+            {
+                query = query.Where(Filter);
+            }
             if(IncludeProperties!=null)
             {
                 foreach(var includeProp in IncludeProperties.
